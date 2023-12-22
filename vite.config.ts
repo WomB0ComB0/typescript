@@ -1,0 +1,20 @@
+import path from 'path';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import eslint from 'vite-plugin-eslint';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    eslint({
+      include: ['./src/**/*.tsx', './src/**/*.ts', './server/**/*.ts'],
+      exclude: ['node_modules/**', './src/**/*.d.ts'],
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    }
+  },
+})
