@@ -1,8 +1,8 @@
 export class Message{
   public readonly id: number; 
-  title: string;
-  message: string;
-  isSent: boolean;
+  title?: string;
+  message?: string;
+  isSent?: boolean;
   constructor(id: number){
     this.id = id;
   }

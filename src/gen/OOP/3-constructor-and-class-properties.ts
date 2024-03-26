@@ -4,11 +4,16 @@
 // The constructor method is always called with the new keyword.
 // The constructor method is a special method for creating and initializing an object created with a class.
 export class Message { // class declaration
-  title: string;
-  message: string;
-  isSent: boolean;
-  id: number;
-  constructor(title, message, id){ // constructor
+  public title: string;
+  public message: string;
+  public isSent: boolean;
+  public id: number;
+
+  constructor(
+      title: string, 
+      message: string, 
+      id: number
+    ){
     this.title = title;
     this.message = message;
     this.id = id;
@@ -16,3 +21,4 @@ export class Message { // class declaration
   }
 }
 const message = new Message('title', 'message', 1);
+console.log(message)

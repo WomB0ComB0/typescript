@@ -2,6 +2,13 @@ class User {
     firstName: string;
     lastName: string;
     email: string;
+
+    constructor() {
+        this.firstName = '';
+        this.lastName = '';
+        this.email = '';
+    }
+
     get fullName(): string {
         return `${this.firstName} ${this.lastName}`;
     }
@@ -14,3 +21,7 @@ class User {
         return this.email === email;
     }
 }
+
+const user = new User();
+user.fullName = 'John Doe';
+user.email = 'mikeodnis3242004@gmail.com'

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
 // Utility Type 1: Head
 // Extracts the first element of an array type.
 type Head<T extends Array<any>> = T extends [infer U, ...infer _Rest] ? U : never
