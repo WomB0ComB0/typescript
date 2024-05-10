@@ -8,14 +8,24 @@ export class User {
   firstName:string;
   lastName:string;
   email:string;
-  constructor(firstName:string, lastName:string, email:string) {
+  age:number;
+  
+  constructor(
+    firstName:string,
+    lastName:string,
+    email:string,
+    age:number
+  ) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
+    this.age = age;
   }
+  
   getFullName = ():string => {
     return `${this.firstName} ${this.lastName}`;
   }
+  
   canSendMessage = ():boolean => {
     return true;
   }
@@ -24,32 +34,33 @@ export class User {
   }
 }
 class BaseUser extends User {
-  protected role: string;
+  protected role!: string;
   public hasAllAccess = ():boolean => {
     return this.role === 'admin';
   }
 }
 export class SuperAdmin extends BaseUser {
-  constructor(firstName: string, lastName: string, email: string) {
-    super(firstName, lastName, email);
+  constructor(firstName: string, lastName: string, email: string, age: number) {
+    super(firstName, lastName, email, age);
     this.role = 'admin';
   }
-  // override
-  public hasAllAccess = (user?: User):boolean => {
+
+  public hasAllAccess = (): boolean => {
     return true;
   }
-  // overloading failure
-  // public hasAllAccess(user:user) {
-  //   return user.age > 18 && this.role === 'admin';
-  // }
+
+  public canAccess(user: User): boolean {
+    return user.age > 18 && this.role === 'admin';
+  }
 }
 export class Guest implements User {
-  name: string;
-  age: number;
-  email: string;
   firstName: string;
   lastName: string;
-  middleName: string;
+  email: string;
+  name?: string;
+  age: number;
+  middleName?: string;
+  
   getFullName = ():string => {
     return `${this.firstName} ${this.middleName} ${this.lastName}`;
   }
@@ -59,7 +70,12 @@ export class Guest implements User {
   introduce = ():string => {
     return `Hello, my name is ${this.getFullName()}.`;
   }
-  constructor(firstName: string, lastName: string, age: number, email: string) {
+  constructor(
+      firstName: string,
+      lastName: string,
+      email: string,
+      age: number,
+    ) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;

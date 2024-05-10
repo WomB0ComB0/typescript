@@ -4,11 +4,11 @@ export class Song {
   lyric: string;
   length: number;
   isLiked: boolean;
-  constructor(title, lyric, length, isLiked){
+  constructor(title: string, lyric: string, length: number, isLiked: boolean = false){
     this.title = title;
     this.lyric = lyric;
-    this.length = length.toFixed(2);
-    this.isLiked = false;
+    this.length = +length.toFixed(2);
+    this.isLiked = isLiked; // default value
   }
   // Method
   previewLyric(): string{ // method declaration
